@@ -1,13 +1,17 @@
-use brainrust::{BFProgram};
+use brainrust::{Program,BFProgram};
 
 fn main() {
-  let program = BFProgram {
-    tape: vec![0],
-    position: 0
-  };
+  let expression = std::env::args().nth(1).expect("no expression given");
+  
+  let mut program: Program = BFProgram::new();
 
-  program.plus();
-  program.minus();
-  program.shift_left();
-  program.shift_right();
+  for instruction in expression.chars() {
+    match instruction {
+      '.' => program.print(),
+      '+' => program.plus(),
+      '>' => program.shift_right(),
+      '<' => program.shift_left(),
+      _ => ()
+    }
+  }
 }
