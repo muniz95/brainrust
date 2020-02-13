@@ -11,6 +11,8 @@ fn main() {
       '+' => program.plus(),
       '>' => program.shift_right(),
       '<' => program.shift_left(),
+      '[' => program.left_bracket(),
+      ']' => program.right_bracket(),
       _ => ()
     }
   }
